@@ -1,7 +1,6 @@
 import type { NextRequest } from "next/server";
-import { makeBadge } from "badge-maker";
 import fetchUser from "@/utils/user";
-import getStyle from "@/utils/style";
+import badgeResponse from "@/utils/badge";
 
 export async function GET(
   request: NextRequest,
@@ -16,13 +15,9 @@ export async function GET(
   else if (ccfLevel >= 6) color = "#3498db";
   else color = "#52c41a";
 
-  return new Response(
-    makeBadge({
-      label: "CCF 等级",
-      message: ccfLevel.toString(),
-      color,
-      ...getStyle(request),
-    }),
-    { headers: { "Content-Type": "image/svg+xml" } },
-  );
+  return badgeResponse(request.nextUrl.searchParams, {
+    label: "CCF 等级",
+    message: ccfLevel.toString(),
+    color,
+  });
 }
