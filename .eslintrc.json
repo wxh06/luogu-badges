@@ -15,6 +15,10 @@
         "prettier"
       ],
       "parserOptions": { "project": "tsconfig.json" }
+    },
+    {
+      "files": ["route.ts", "route.tsx"],
+      "rules": { "import/prefer-default-export": "off" }
     }
   ]
 }
