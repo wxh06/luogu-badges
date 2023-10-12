@@ -5,6 +5,9 @@
     "plugin:react/jsx-runtime",
     "prettier"
   ],
+  "rules": {
+    "jsx-a11y/label-has-associated-control": ["error", { "assert": "either" }]
+  },
   "overrides": [
     {
       "files": ["*.ts", "*.tsx"],
