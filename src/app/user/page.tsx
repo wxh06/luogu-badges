@@ -2,27 +2,31 @@
 
 import { useState } from "react";
 
+const DEFAULT_UID = process.env.NEXT_PUBLIC_DEFAULT_UID;
+
 export default function Page() {
-  const [uid, setUid] = useState("108135");
-  const [style, setStyle] = useState("");
+  const [uid, setUid] = useState(DEFAULT_UID);
+  const [style, setStyle] = useState("flat");
 
   return (
     <>
-      <div className="m-1">
-        <label>
-          用户编号{" "}
+      <div className="grid max-w-xs grid-cols-1 gap-6">
+        <label className="block">
+          <span className="text-gray-700">用户编号</span>
           <input
+            className="simple mt-1 block w-full"
             type="number"
             value={uid}
             onChange={(e) => setUid(e.target.value)}
           />
         </label>
-      </div>
-      <div className="m-1">
-        <label>
-          样式{" "}
-          <select value={style} onChange={(e) => setStyle(e.target.value)}>
-            <option value="">请选择</option>
+        <label className="block">
+          <span className="text-gray-700">样式</span>
+          <select
+            className="simple mt-1 block w-full"
+            value={style}
+            onChange={(e) => setStyle(e.target.value)}
+          >
             <option>flat</option>
             <option>flat-square</option>
             <option>plastic</option>
@@ -30,14 +34,17 @@ export default function Page() {
           </select>
         </label>
       </div>
-      {["ccf-level", "follower-count", "passed-problem-count"].map((badge) => (
-        <img
-          className="m-1"
-          alt={badge}
-          src={`/badge/user/${uid}/${badge}?style=${style}`}
-          key={badge}
-        />
-      ))}
+      <div className="mt-8 flex gap-2">
+        {["ccf-level", "follower-count", "passed-problem-count"].map(
+          (badge) => (
+            <img
+              alt={badge}
+              src={`/badge/user/${uid}/${badge}?style=${style}`}
+              key={badge}
+            />
+          ),
+        )}
+      </div>
     </>
   );
 }

@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  /* https://tailwindcss-forms.vercel.app */
+  input.simple,
+  select.simple,
+  textarea.simple {
+    @apply rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+  }
+  input.solid,
+  select.solid,
+  textarea.solid {
+    @apply rounded-md border-transparent bg-gray-100 focus:border-gray-500 focus:bg-white focus:ring-0;
+  }
+}
