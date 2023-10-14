@@ -9,21 +9,31 @@ export default function Page() {
   const [style, setStyle] = useState("flat");
 
   return (
-    <>
-      <div className="grid max-w-xs grid-cols-1 gap-6">
-        <label className="block">
-          <span className="text-gray-700">用户编号</span>
+    <div className="mx-auto mt-4 max-w-2xl">
+      <div className="border-b border-gray-100 px-4 pb-6 sm:px-0">
+        <h3 className="text-base font-semibold leading-7 text-gray-900">
+          洛谷徽章
+        </h3>
+        <p className="mt-1 text-sm leading-6 text-gray-600">洛谷用户徽章</p>
+      </div>
+      <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-8 px-4 sm:grid-cols-2 sm:px-0">
+        <label className="block sm:col-span-1">
+          <span className="text-sm font-medium leading-6 text-gray-900">
+            用户编号
+          </span>
           <input
-            className="simple mt-1 block w-full"
+            className="form mt-2 block w-full"
             type="number"
             value={uid}
             onChange={(e) => setUid(e.target.value)}
           />
         </label>
-        <label className="block">
-          <span className="text-gray-700">样式</span>
+        <label className="block sm:col-span-1">
+          <span className="text-sm font-medium leading-6 text-gray-900">
+            样式
+          </span>
           <select
-            className="simple mt-1 block w-full"
+            className="form mt-2 block w-full"
             value={style}
             onChange={(e) => setStyle(e.target.value)}
           >
@@ -34,17 +44,38 @@ export default function Page() {
           </select>
         </label>
       </div>
-      <div className="mt-8 flex gap-2">
+      <dl className="mt-6 divide-y divide-gray-100 border-t border-gray-100">
         {["ccf-level", "follower-count", "passed-problem-count"].map(
           (badge) => (
-            <img
-              alt={badge}
-              src={`/badge/user/${uid}/${badge}?style=${style}`}
+            <div
+              className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0"
               key={badge}
-            />
+            >
+              <dt className="flex items-center justify-center text-sm font-medium leading-6 text-gray-900">
+                <img
+                  alt={badge}
+                  src={`/badge/user/${uid}/${badge}?style=${style}`}
+                />
+              </dt>
+              <dd className="mt-1 flex items-center justify-center text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                <input
+                  className="form block w-72 max-w-xs sm:max-w-none"
+                  readOnly
+                  defaultValue={
+                    typeof window === "object"
+                      ? new URL(
+                          `/badge/user/${uid}/${badge}?style=${style}`,
+                          window.location.href,
+                        ).toString()
+                      : undefined
+                  }
+                  onFocus={(e) => e.target.select()}
+                />
+              </dd>
+            </div>
           ),
         )}
-      </div>
-    </>
+      </dl>
+    </div>
   );
 }
