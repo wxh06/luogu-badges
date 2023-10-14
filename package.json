@@ -16,7 +16,8 @@
     "luogu-api-docs": "github:0f-0b/luogu-api-docs",
     "next": "13.5.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.47.0"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.6",
