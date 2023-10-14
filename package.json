@@ -10,6 +10,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
+    "@heroicons/react": "^2.0.18",
     "badge-maker": "^3.3.1",
     "luogu-api-docs": "github:0f-0b/luogu-api-docs",
     "next": "13.5.4",

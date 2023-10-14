@@ -10,12 +10,9 @@ export default function Page() {
 
   return (
     <div className="mx-auto mt-4 max-w-2xl">
-      <div className="border-b border-gray-100 px-4 pb-6 sm:px-0">
-        <h3 className="text-base font-semibold leading-7 text-gray-900">
-          洛谷徽章
-        </h3>
-        <p className="mt-1 text-sm leading-6 text-gray-600">洛谷用户徽章</p>
-      </div>
+      <h2 className="text-base font-semibold leading-7 text-gray-900">
+        洛谷用户徽章
+      </h2>
       <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-8 px-4 sm:grid-cols-2 sm:px-0">
         <label className="block sm:col-span-1">
           <span className="text-sm font-medium leading-6 text-gray-900">
@@ -59,7 +56,7 @@ export default function Page() {
               </dt>
               <dd className="mt-1 flex items-center justify-center text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                 <input
-                  className="form block w-72 max-w-xs sm:max-w-none"
+                  className="form block w-full max-w-xs sm:max-w-none"
                   readOnly
                   defaultValue={
                     typeof window === "object"
