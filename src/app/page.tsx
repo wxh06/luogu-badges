@@ -4,7 +4,7 @@ import Header from "@/components/header";
 export default function Home() {
   return (
     <div className="h-screen overflow-hidden bg-white">
-      <Header className="absolute inset-x-0 top-0 z-50" />
+      <Header className="absolute inset-x-0 top-0 z-10" />
 
       <div className="relative isolate px-6 pt-14 lg:px-8">
         <div

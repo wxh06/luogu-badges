@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
 
 const navigation = [
   { name: "用户徽章", href: "/user" },
@@ -23,10 +24,13 @@ export default function Header(props: JSX.IntrinsicElements["header"]) {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">洛谷徽章</span>
-            <img
+            <Image
               className="h-8 w-auto"
               src="https://lglg.top/piterator-x-exlg.svg"
-              alt=""
+              alt="Piterator ⨯ EXLG"
+              width={0}
+              height={0}
+              priority
             />
           </Link>
         </div>
@@ -71,10 +75,12 @@ export default function Header(props: JSX.IntrinsicElements["header"]) {
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">洛谷徽章</span>
-              <img
+              <Image
                 className="h-8 w-auto"
                 src="https://lglg.top/piterator-x-exlg.svg"
-                alt=""
+                alt="Piterator ⨯ EXLG"
+                width={0}
+                height={0}
               />
             </Link>
             <button
