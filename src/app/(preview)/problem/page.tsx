@@ -1,7 +1,7 @@
-import BadgesPreview from "@/components/badges-preview";
+import ProblemBadges from "./problem-badges";
+
+const { DEFAULT_PROBLEM } = process.env;
 
 export default function Page() {
-  return (
-    <BadgesPreview path="problem/P1001" badges={["difficulty"]} format={{}} />
-  );
+  return <ProblemBadges defaultProblem={DEFAULT_PROBLEM!} />;
 }
