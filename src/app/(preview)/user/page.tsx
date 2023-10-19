@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import BadgesPreview from "@/components/badges-preview";
+import BadgesPreview, { type BadgeFormat } from "@/components/badges-preview";
+import Customization from "@/components/customization";
 
 const DEFAULT_UID = process.env.NEXT_PUBLIC_DEFAULT_UID;
 
@@ -20,7 +21,7 @@ interface IFormInput {
 
 export default function Page() {
   const [uid, setUid] = useState(DEFAULT_UID);
-  const [style, setStyle] = useState("flat");
+  const [badgeFormat, setBadgeFormat] = useState<BadgeFormat>({});
   const { register, handleSubmit } = useForm<IFormInput>({
     defaultValues: { uid },
   });
@@ -58,30 +59,16 @@ export default function Page() {
             </button>
           </div>
         </form>
-        <div className="border-b border-gray-900/10 pb-10">
-          <h2 className="text-base font-semibold leading-7 text-gray-900">
-            自定义
-          </h2>
-          <div className="mt-8 grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2">
-            <label className="block sm:col-span-1">
-              <span className="text-sm font-medium leading-6 text-gray-900">
-                样式
-              </span>
-              <select
-                className="form mt-2 block w-full"
-                value={style}
-                onChange={(e) => setStyle(e.target.value)}
-              >
-                <option>flat</option>
-                <option>flat-square</option>
-                <option>plastic</option>
-                <option>for-the-badge</option>
-              </select>
-            </label>
-          </div>
-        </div>
+        <Customization
+          badgeFormat={badgeFormat}
+          setBadgeFormat={setBadgeFormat}
+        />
       </div>
-      <BadgesPreview path={`user/${uid}`} badges={badges} params={{ style }} />
+      <BadgesPreview
+        path={`user/${uid}`}
+        badges={badges}
+        format={badgeFormat}
+      />
     </>
   );
 }

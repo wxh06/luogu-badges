@@ -1,22 +1,22 @@
 "use client";
 
-interface Params {
+export interface BadgeFormat {
   style?: string;
 }
 
-const getPathname = (path: string, badge: string, params: Params) =>
+const getPathname = (path: string, badge: string, format: BadgeFormat) =>
   `/badge/${path}/${badge}?${new URLSearchParams(
-    params as Record<keyof Params, string>,
+    format as Record<keyof BadgeFormat, string>,
   ).toString()}`;
 
 export default function BadgesPreview({
   path,
   badges,
-  params,
+  format,
 }: {
   path: string;
   badges: string[];
-  params: Params;
+  format: BadgeFormat;
 }) {
   return (
     <dl className="divide-y divide-gray-100">
@@ -27,7 +27,7 @@ export default function BadgesPreview({
         >
           <dt className="flex items-center justify-center text-sm font-medium leading-6 text-gray-900">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img alt={badge} src={getPathname(path, badge, params)} />
+            <img alt={badge} src={getPathname(path, badge, format)} />
           </dt>
           <dd className="mt-1 flex items-center justify-center text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
             <input
@@ -35,7 +35,7 @@ export default function BadgesPreview({
               value={
                 typeof window === "object"
                   ? new URL(
-                      getPathname(path, badge, params),
+                      getPathname(path, badge, format),
                       window.location.href,
                     ).toString()
                   : undefined
